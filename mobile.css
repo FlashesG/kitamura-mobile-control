@@ -1,0 +1,659 @@
+/* ===== リセット・ベーススタイル ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+  background: linear-gradient(135deg, #e50012 0%, #c5001a 100%);
+  color: white;
+  padding: 16px 20px;
+  box-shadow: 0 2px 10px rgba(229, 0, 18, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* ===== メインコンテンツ ===== */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== ローディング画面 ===== */
+.loading-screen {
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e1e5e9;
+  border-top: 4px solid #FF9500;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 4px;
+  background-color: #e1e5e9;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #FF9500, #FFB84D);
+  border-radius: 2px;
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ===== エラー画面 ===== */
+.error-screen {
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.error-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.error-title {
+  font-size: 20px;
+  color: #d32f2f;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.error-message {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #FF9500, #FFB84D);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 149, 0, 0.4);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+/* ===== 操作画面共通 ===== */
+.operation-screen {
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.screen-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.operation-title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.operation-info {
+  background: rgba(255, 149, 0, 0.1);
+  border: 1px solid rgba(255, 149, 0, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.product-count {
+  display: inline-block;
+  background: #FF9500;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.timeout-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.timeout-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.timeout-countdown {
+  background: linear-gradient(135deg, #e50012, #c5001a);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ===== 商品リスト ===== */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-color: #FF9500;
+}
+
+.product-card:active {
+  transform: translateY(-2px);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF9500, #FFB84D);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover::before {
+  transform: scaleX(1);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.product-index {
+  background: linear-gradient(135deg, #FF9500, #FFB84D);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.product-condition {
+  background: #f8f9fa;
+  color: #495057;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #dee2e6;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e50012;
+}
+
+.product-target {
+  font-size: 12px;
+  color: #666;
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 8px;
+  max-width: 40%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ===== 注文確認画面 ===== */
+.confirmation-content {
+  margin-bottom: 30px;
+}
+
+.confirmation-message {
+  text-align: center;
+  font-size: 16px;
+  color: #495057;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.warning-box {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  border: 1px solid #ffd93d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.warning-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.warning-text {
+  font-size: 14px;
+  color: #856404;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ===== アクションボタン ===== */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.confirm-button {
+  background: linear-gradient(135deg, #e50012, #c5001a);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 0, 18, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.confirm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 0, 18, 0.4);
+}
+
+.confirm-button:active {
+  transform: translateY(0);
+}
+
+.cancel-button {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cancel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+  background: linear-gradient(135deg, #5a6268, #495057);
+}
+
+.cancel-button:active {
+  transform: translateY(0);
+}
+
+/* ===== 完了画面 ===== */
+.completion-screen {
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.completion-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.completion-title {
+  font-size: 24px;
+  color: #28a745;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.completion-message {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.close-button {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.close-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.close-button:active {
+  transform: translateY(0);
+}
+
+/* ===== フッター ===== */
+.footer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #e1e5e9;
+  padding: 16px 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.connection-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-indicator {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: rgba(255, 149, 0, 0.1);
+  color: #FF9500;
+  font-weight: 500;
+}
+
+/* ===== デバッグ情報 ===== */
+.debug-info {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 10px;
+  max-width: 200px;
+  z-index: 1000;
+}
+
+.debug-content {
+  margin-top: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+/* ===== 共通アニメーション ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== レスポンシブ対応 ===== */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .header {
+    padding: 12px 16px;
+  }
+  
+  .app-title {
+    font-size: 20px;
+  }
+  
+  .operation-title {
+    font-size: 18px;
+  }
+  
+  .product-name {
+    font-size: 15px;
+  }
+  
+  .action-buttons {
+    gap: 10px;
+  }
+  
+  .confirm-button, .cancel-button {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-card {
+    padding: 16px;
+  }
+  
+  .product-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .product-target {
+    max-width: 100%;
+  }
+}
+
+/* ===== ダークモード対応（ユーザー設定に基づく） ===== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+    color: #e2e8f0;
+  }
+  
+  .product-card {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  .operation-info {
+    background: rgba(255, 149, 0, 0.2);
+    border-color: rgba(255, 149, 0, 0.4);
+  }
+  
+  .footer {
+    background: rgba(45, 55, 72, 0.95);
+    border-top-color: #4a5568;
+  }
+  
+  .loading-text, .error-message, .confirmation-message {
+    color: #a0aec0;
+  }
+  
+  .product-condition, .product-target {
+    background: #4a5568;
+    color: #e2e8f0;
+    border-color: #68d391;
+  }
+}

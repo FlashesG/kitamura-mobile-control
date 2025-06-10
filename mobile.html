@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>キタムラカメラ - スマホ操作</title>
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="app-title">📷 キタムラカメラ</h1>
+      <p class="app-subtitle">スマホ操作画面</p>
+    </div>
+  </header>
+
+  <!-- メインコンテンツエリア -->
+  <main class="main-content">
+    <!-- ローディング画面 -->
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">データを読み込み中...</p>
+      <div class="loading-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- エラー画面 -->
+    <div id="errorScreen" class="error-screen" style="display: none;">
+      <div class="error-icon">⚠️</div>
+      <h2 class="error-title">エラーが発生しました</h2>
+      <p id="errorMessage" class="error-message"></p>
+      <button id="retryButton" class="retry-button">再試行</button>
+    </div>
+
+    <!-- 複数商品選択画面 -->
+    <div id="productSelectionScreen" class="operation-screen" style="display: none;">
+      <div class="screen-header">
+        <h2 class="operation-title">🛍️ 商品を選択してください</h2>
+        <div class="operation-info">
+          <span id="productCount" class="product-count"></span>
+          <div class="timeout-info">
+            <span class="timeout-label">残り時間:</span>
+            <span id="timeoutCountdown" class="timeout-countdown"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="productList" class="product-list">
+        <!-- 商品リストが動的に生成される -->
+      </div>
+
+      <div class="action-buttons">
+        <button id="cancelSelectionButton" class="cancel-button">❌ キャンセル</button>
+      </div>
+    </div>
+
+    <!-- 注文確認画面 -->
+    <div id="orderConfirmationScreen" class="operation-screen" style="display: none;">
+      <div class="screen-header">
+        <h2 class="operation-title">✅ 注文を確定しますか？</h2>
+        <div class="operation-info">
+          <div class="confirmation-message">
+            注文内容確認ページに到達しました。<br>
+            最終的な注文確定を行いますか？
+          </div>
+          <div class="timeout-info">
+            <span class="timeout-label">残り時間:</span>
+            <span id="orderTimeoutCountdown" class="timeout-countdown"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirmation-content">
+        <div class="warning-box">
+          <div class="warning-icon">⚠️</div>
+          <p class="warning-text">
+            この操作により実際の購入が完了します。<br>
+            内容をよく確認してから実行してください。
+          </p>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="confirmOrderButton" class="confirm-button">🛒 注文確定</button>
+        <button id="cancelOrderButton" class="cancel-button">❌ キャンセル</button>
+      </div>
+    </div>
+
+    <!-- 完了画面 -->
+    <div id="completionScreen" class="completion-screen" style="display: none;">
+      <div class="completion-icon">✅</div>
+      <h2 class="completion-title">操作完了</h2>
+      <p id="completionMessage" class="completion-message"></p>
+      <button id="closeButton" class="close-button">閉じる</button>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p class="footer-text">キタムラカメラ自動購入ツール v1.4.0</p>
+    <div class="connection-status">
+      <span id="connectionStatus" class="status-indicator">🔄 接続中</span>
+    </div>
+  </footer>
+
+  <!-- デバッグ情報（開発時のみ表示） -->
+  <div id="debugInfo" class="debug-info" style="display: none;">
+    <details>
+      <summary>デバッグ情報</summary>
+      <div id="debugContent" class="debug-content"></div>
+    </details>
+  </div>
+
+  <!-- ★★★ Firebase SDK の読み込み (ここから修正) ★★★ -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  
+  <!-- ★★★ 設定ファイルとメインスクリプトの読み込み (順番が重要) ★★★ -->
+  <script src="firebase-config.js"></script>
+  <script src="mobile.js"></script>
+</body>
+</html>
